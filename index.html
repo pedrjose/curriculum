@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pedro Lima | Engenheiro de Software e Product Owner</title>
+    <meta name="description"
+        content="Currículo de Pedro Lima: Engenheiro de Software e Product Owner, TypeScript, Node.js, React, Go, Python e AWS.">
+
+    <!-- Fontes (opcional). Se estiverem indisponíveis, os fallbacks do sistema são usados. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ---------- Tokens ---------- */
+        :root {
+            --bg: #f8fafc;
+            --paper: #ffffff;
+            --ink: #1f2937;
+            --ink-soft: #4b5563;
+            --muted: #6b7280;
+            --accent: #1e4e8c;
+            --accent-soft: #e8eff8;
+            --rule: #d9e0ea;
+
+            --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+            --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            text-decoration-thickness: 2px;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* ---------- Barra de ação (somente tela) ---------- */
+        .toolbar {
+            max-width: 860px;
+            margin: 24px auto 0;
+            padding: 0 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-print {
+            font: 500 0.9rem var(--sans);
+            color: #fff;
+            background: var(--accent);
+            border: 0;
+            border-radius: 8px;
+            padding: 10px 18px;
+            cursor: pointer;
+        }
+
+        .btn-print:hover {
+            background: #173d70;
+        }
+
+        /* ---------- Folha ---------- */
+        .sheet {
+            max-width: 860px;
+            margin: 16px auto 48px;
+            background: var(--paper);
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            padding: 56px 64px;
+        }
+
+        /* ---------- Cabeçalho ---------- */
+        .header {
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .name {
+            font-family: var(--serif);
+            font-weight: 700;
+            font-size: 2.9rem;
+            line-height: 1.05;
+            letter-spacing: -0.015em;
+            margin: 0;
+            color: var(--ink);
+        }
+
+        .role {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 8px 0 0;
+            text-transform: uppercase;
+        }
+
+        .contacts {
+            list-style: none;
+            margin: 18px 0 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 22px;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+        }
+
+        .contacts a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .contacts a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .contacts .label {
+            color: var(--muted);
+            margin-right: 6px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .contacts .label svg {
+            width: 15px;
+            height: 15px;
+            stroke: var(--muted);
+            vertical-align: middle;
+        }
+
+        /* ---------- Seções ---------- */
+        section {
+            margin-top: 32px;
+        }
+
+        h2 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.3rem;
+            line-height: 1.2;
+            color: var(--accent);
+            margin: 0 0 14px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--rule);
+            text-transform: uppercase;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .summary p {
+            max-width: 75ch;
+            color: var(--ink);
+        }
+
+        /* ---------- Itens (educação, experiência) ---------- */
+        .entry {
+            margin-top: 20px;
+        }
+
+        .entry:first-of-type {
+            margin-top: 0;
+        }
+
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 6px 24px;
+            flex-wrap: wrap;
+        }
+
+        .entry-title {
+            font-weight: 600;
+            font-size: 1.03rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .entry-org {
+            color: var(--accent);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .entry-date {
+            font-size: 0.9rem;
+            color: var(--muted);
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .entry-sub {
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+
+        ul.bullets {
+            margin: 8px 0 0;
+            padding-left: 1.15rem;
+        }
+
+        ul.bullets li {
+            margin: 4px 0;
+            padding-left: 4px;
+            color: var(--ink);
+        }
+
+        ul.bullets li::marker {
+            color: var(--accent);
+        }
+
+        /* ---------- Competências ---------- */
+        .skills {
+            display: grid;
+            gap: 10px;
+            margin: 0;
+        }
+
+        .skill-row {
+            display: grid;
+            grid-template-columns: 210px 1fr;
+            gap: 4px 20px;
+        }
+
+        .skill-row dt {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .skill-row dd {
+            margin: 0;
+            color: var(--ink-soft);
+        }
+
+        .highlight {
+            margin-top: 16px;
+            padding: 10px 14px;
+            background: var(--accent-soft);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+            color: var(--ink);
+            font-size: 0.97rem;
+        }
+
+        /* ---------- Responsivo ---------- */
+        @media (max-width: 720px) {
+            .sheet {
+                padding: 32px 22px;
+                margin: 12px 0 32px;
+                border-radius: 0;
+                border-left: 0;
+                border-right: 0;
+            }
+
+            .name {
+                font-size: 2.2rem;
+            }
+
+            .skill-row {
+                grid-template-columns: 1fr;
+            }
+
+            .entry-date {
+                white-space: normal;
+            }
+
+            .toolbar {
+                margin-top: 16px;
+            }
+        }
+
+        /* ---------- Impressão / PDF (A4) ---------- */
+        @page {
+            size: A4;
+            margin: 14mm 15mm;
+        }
+
+        @media print {
+
+            html,
+            body {
+                background: #fff !important;
+                font-size: 10pt;
+                line-height: 1.45;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .toolbar,
+            .no-print {
+                display: none !important;
+            }
+
+            .sheet {
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .name {
+                font-size: 24pt;
+            }
+
+            .role {
+                font-size: 12pt;
+                margin-top: 4pt;
+            }
+
+            .header {
+                padding-bottom: 10pt;
+            }
+
+            .contacts {
+                margin-top: 10pt;
+                font-size: 9pt;
+                gap: 3pt 14pt;
+            }
+
+            .contacts a {
+                border-bottom: 0;
+            }
+
+            section {
+                margin-top: 15pt;
+            }
+
+            h2 {
+                font-size: 12pt;
+                margin-bottom: 8pt;
+                padding-bottom: 3pt;
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .entry {
+                margin-top: 11pt;
+            }
+
+            .entry-title {
+                font-size: 10.5pt;
+            }
+
+            .entry-date {
+                font-size: 9pt;
+            }
+
+            .entry-sub {
+                font-size: 9.5pt;
+            }
+
+            ul.bullets {
+                margin-top: 4pt;
+            }
+
+            ul.bullets li {
+                margin: 2pt 0;
+            }
+
+            /* Evita quebras de página no meio de blocos */
+            .entry,
+            .skill-row,
+            .highlight,
+            .header,
+            ul.bullets li {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .entry-head {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .skill-row {
+                grid-template-columns: 150pt 1fr;
+                gap: 2pt 12pt;
+            }
+
+            .skills {
+                gap: 5pt;
+            }
+
+            .highlight {
+                margin-top: 10pt;
+                padding: 6pt 10pt;
+                font-size: 9.5pt;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .contacts a {
+                color: var(--ink);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toolbar no-print">
+        <button class="btn-print" type="button" onclick="window.print()">Baixar PDF</button>
+    </div>
+
+    <main class="sheet">
+
+        <!-- Cabeçalho -->
+        <header class="header">
+            <h1 class="name">Pedro Lima</h1>
+            <p class="role">Engenheiro de Software e Product Owner</p>
+
+            <ul class="contacts">
+                <li>
+                    <span class="label" title="E-mail">
+                        <!-- Ícone SVG E-mail -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </span>
+                    <a href="mailto:pedrlimadev@gmail.com">pedrlimadev@gmail.com</a>
+                </li>
+                <li>
+                    <span class="label" title="LinkedIn">
+                        <!-- Ícone SVG LinkedIn -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </span>
+                    <a href="https://linkedin.com/in/pedrojosel" target="_blank"
+                        rel="noopener">linkedin.com/in/pedrojosel</a>
+                </li>
+                <li>
+                    <span class="label" title="GitHub">
+                        <!-- Ícone SVG GitHub -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                            </path>
+                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                        </svg>
+                    </span>
+                    <a href="https://github.com/pedrjose" target="_blank" rel="noopener">github.com/pedrjose</a>
+                </li>
+                <li>
+                    <span class="label" title="Instagram">
+                        <!-- Ícone SVG Instagram -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </span>
+                    <a href="https://instagram.com/pedrlima.dev" target="_blank"
+                        rel="noopener">instagram.com/pedrlima.dev</a>
+                </li>
+                <li>
+                    <span class="label" title="Telefone">
+                        <!-- Ícone SVG Telefone -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                    </span>
+                    <a href="tel:+5587996559381">(87) 9.9655-9381</a>
+                </li>
+                <li>
+                    <span class="label" title="Localização">
+                        <!-- Ícone SVG Localização -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </span>
+                    Patos, PB
+                </li>
+            </ul>
+        </header>
+
+        <!-- Resumo -->
+        <section class="summary" aria-labelledby="h-resumo">
+            <h2 id="h-resumo">Resumo Profissional</h2>
+            <p>
+                Engenheiro de Software e Product Owner com sólida trajetória no desenvolvimento de soluções web e móveis
+                escaláveis, combinando visão de produto e rigor técnico. Graduando em Ciência da Computação e
+                certificado
+                AWS
+                Cloud Practitioner, possuo experiência prática no ciclo completo de desenvolvimento (SDLC), modelagem de
+                APIs
+                e arquitetura de sistemas. Atuo com proficiência no ecossistema TypeScript/JavaScript, Node.js, Go,
+                Python,
+                React e bancos de dados SQL/NoSQL, além de metodologias ágeis e prototipagem UI/UX no Figma. Focado na
+                entrega
+                de produtos de alto impacto, aliando código limpo, performance de interface e alinhamento com objetivos
+                de negócio.
+            </p>
+        </section>
+
+        <!-- Educação -->
+        <section aria-labelledby="h-educacao">
+            <h2 id="h-educacao">Educação</h2>
+            <article class="entry">
+                <div class="entry-head">
+                    <h3 class="entry-title">Bacharelado em Ciência da Computação <span class="entry-org">| Universidade
+                            Estadual da Paraíba (UEPB)</span></h3>
+                    <span class="entry-date">Mar 2021 – Mar 2027</span>
+                </div>
+            </article>
+        </section>
+
+        <!-- Experiência -->
+        <section aria-labelledby="h-experiencia">
+            <h2 id="h-experiencia">Experiência Profissional</h2>
+
+            <article class="entry">
+                <div class="entry-head">
+                    <h3 class="entry-title">Product Owner &amp; Engenheiro de Software Full Stack <span
+                            class="entry-org">| Mada.ai</span></h3>
+                    <span class="entry-date">Set 2026 – Atual</span>
+                </div>
+                <ul class="bullets">
+                    <li>Liderar o refinamento de produto e a gestão de backlog, atuando como Product Owner na definição
+                        de requisitos e priorização de funcionalidades.</li>
+                    <li>Desenvolver e manter microsserviços de backend utilizando TypeScript e Node.js, assegurando alta
+                        disponibilidade e integração de APIs.</li>
+                    <li>Criar e prototipar interfaces de usuário (UI/UX) no Figma, alinhando a experiência do usuário
+                        com as diretrizes da marca e necessidades dos clientes.</li>
+                    <li>Coordenar entregas ágeis e alinhar escopos de desenvolvimento diretamente com os stakeholders e
+                        times de engenharia.</li>
+                </ul>
+            </article>
+
+            <article class="entry">
+                <div class="entry-head">
+                    <h3 class="entry-title">Engenheiro de Software <span class="entry-org">| P-Well</span></h3>
+                    <span class="entry-date">Ago 2026 – Atual</span>
+                </div>
+                <ul class="bullets">
+                    <li>Gerenciar o ciclo de vida completo de desenvolvimento de software (SDLC), desde o levantamento
+                        de requisitos até a implantação em produção.</li>
+                    <li>Desenvolver arquiteturas escaláveis e interfaces full-stack integrando soluções de backend e
+                        frontend com suporte contínuo.</li>
+                    <li>Estruturar fluxos de UI/UX e protótipos focados na usabilidade e eficiência das aplicações.</li>
+                    <li>Mapear necessidades de negócios para transformar requisitos complexos em funcionalidades
+                        técnicas eficientes.</li>
+                </ul>
+            </article>
+
+            <article class="entry">
+                <div class="entry-head">
+                    <h3 class="entry-title">Desenvolvedor Front-end <span class="entry-org">| VibeCEM</span></h3>
+                    <span class="entry-date">Set 2025 – Set 2026</span>
+                </div>
+                <ul class="bullets">
+                    <li>Construir e manter interfaces web responsivas, acessíveis e de alta performance utilizando HTML,
+                        CSS, JavaScript e ReactJS.</li>
+                    <li>Colaborar diretamente com equipes de design e backend para traduzir protótipos em código
+                        escalável e limpo.</li>
+                    <li>Garantir compatibilidade cross-browser, otimização de renderização e usabilidade contínua das
+                        aplicações.</li>
+                    <li>Aplicar boas práticas de desenvolvimento web e padrões de Clean Code para otimização de
+                        carregamento e UX.</li>
+                </ul>
+            </article>
+
+            <article class="entry">
+                <div class="entry-head">
+                    <h3 class="entry-title">Estagiário <span class="entry-org">| Compass UOL</span></h3>
+                    <span class="entry-date">Set 2024 – Fev 2025</span>
+                </div>
+                <ul class="bullets">
+                    <li>Participar de programa intensivo de capacitação em engenharia de software e fundamentos de
+                        tecnologias em nuvem.</li>
+                    <li>Colaborar em projetos práticos focados em desenvolvimento backend, integração de APIs e boas
+                        práticas de código.</li>
+                    <li>Aplicar conceitos de metodologias ágeis e trabalho em equipe em ciclos iterativos de entrega.
+                    </li>
+                    <li>Estudar arquitetura de sistemas e ferramentas de suporte ao desenvolvimento escalável.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Certificações -->
+        <section aria-labelledby="h-certificacoes">
+            <h2 id="h-certificacoes">Certificações</h2>
+            <article class="entry">
+                <div class="entry-head">
+                    <h3 class="entry-title">AWS Certified Cloud Practitioner <span class="entry-org">| Amazon Web
+                            Services
+                            (AWS)</span></h3>
+                </div>
+            </article>
+        </section>
+
+        <!-- Competências -->
+        <section aria-labelledby="h-competencias">
+            <h2 id="h-competencias">Competências e Habilidades</h2>
+            <dl class="skills">
+                <div class="skill-row">
+                    <dt>Linguagens e Frameworks</dt>
+                    <dd>TypeScript, JavaScript, Go, Python, ReactJS, Node.js, HTML5, CSS3, SCSS</dd>
+                </div>
+                <div class="skill-row">
+                    <dt>Banco de Dados e Infraestrutura</dt>
+                    <dd>SQL, NoSQL, Docker, AWS (Amazon Web Services), Git, GitHub</dd>
+                </div>
+                <div class="skill-row">
+                    <dt>Gestão e Design</dt>
+                    <dd>Product Ownership (PO), Gestão de Backlog, Engenharia de Requisitos, Prototipagem UI/UX, Figma
+                    </dd>
+                </div>
+                <div class="skill-row">
+                    <dt>Idiomas</dt>
+                    <dd>Inglês Avançado, Espanhol Intermediário</dd>
+                </div>
+                <div class="skill-row">
+                    <dt>Perfil</dt>
+                    <dd>Aprendo rápido novas tecnologias</dd>
+                </div>
+            </dl>
+        </section>
+
+    </main>
+</body>
+
+</html>
